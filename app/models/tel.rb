@@ -1,0 +1,2 @@
+class Tel < ApplicationRecord
+end
