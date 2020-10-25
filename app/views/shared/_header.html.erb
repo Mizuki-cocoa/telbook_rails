@@ -1,0 +1,19 @@
+<%= image_tag "Telbook.ong", size: "272x48", alt: "Telephone Book"%>
+
+<!-- <% if current_member %>
+<ul class="account-menu">
+    <%= menu_link_to current_member.name + "さん" , :account %>
+    <%= menu_link_to "ログアウト", :session, method: :delete, data: {confirm: "ログアウトしますか？"} %>
+</ul>
+<% end %> -->
+
+<nav class="menubar">
+    <ul><!-- 
+        <%= menu_link_to "TOP", :root %>
+        <%= menu_link_to "ニュース", "#" %>
+        <%= menu_link_to "ブログ", "#" %> -->
+        <% if current_tel %>
+            <%= menu_link_to "TOP", :tels %>
+        <% end %>
+    </ul>
+</nav> 
