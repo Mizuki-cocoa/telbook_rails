@@ -7,7 +7,7 @@ class TelsController < ApplicationController
     
     # 検索
     def search
-        #@members = Member.search(params[:q],params[:man],params[:lady]).page(params[:page]).per(15)
+        #@tels = tel.search(params[:q],params[:man],params[:lady]).page(params[:page]).per(15)
         #render "index"#index.html.erbでの参照
     end
     
@@ -25,29 +25,29 @@ class TelsController < ApplicationController
     end
     
     def create
-        #params.permit!
-        #@member=Member.new(params[:member])
-        # if @member.save
-        # redirect_to @member, notice: "会員を登録しました。"
-        # else
-        # render "new"
-        # end
+        params.permit!
+        @tel=Tel.new(params[:tel])
+        if @tel.save
+        redirect_to @tel, notice: "会員を登録しました。"
+        else
+        render "new"
+        end
     end
     
     def update
-        # params.permit!
-        # @member=Member.find(params[:id])
-        # @member.assign_attributes(params[:member])
-        # if @member.save
-        # redirect_to @member, notice: "会員情報を更新しました。"
-        # else
-        # render "edit"
-        # end
+        params.permit!
+        @tel=Tel.find(params[:id])
+        @tel.assign_attributes(params[:tel])
+        if @tel.save
+        redirect_to @tel, notice: "会員情報を更新しました。"
+        else
+        render "edit"
+        end
     end
     
     def destroy
-        #@member=Member.find(params[:id])
-        #@member.destroy
-        #redirect_to :members, notice: "会員を削除しました。"
+        @tel=Tel.find(params[:id])
+        @tel.destroy
+        redirect_to :tels, notice: "会員を削除しました。"
     end
 end
