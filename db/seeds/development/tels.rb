@@ -5,5 +5,6 @@ gnames = ["太郎", "次郎", "花子", "夏子"]
         number: (idx+1),
         full_name: "#{fnames[idx]} #{gnames[idx]}",
         tel_num: "080-4547-1829"
+        
     )
 end

@@ -1,0 +1,10 @@
+<% @page_title = "会員の新規登録" %>
+
+<h1><%= @page_title %></h1>
+
+<%= form_for @tel do |form| %>
+  <%= render "form", form: form %>
+  <div><%= form.submit  "save" %></div>
+<% end %>
+
+<%= link_to "<<TOP", "/tels" %>

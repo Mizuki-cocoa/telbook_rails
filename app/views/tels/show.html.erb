@@ -1,0 +1,19 @@
+<% @page_title = "友達詳細" %>
+<h1><%= @page_title %></h1>
+
+<table class="attr">
+  <tr>
+    <td><%= @tel.number %></td>
+  </tr>
+  <tr>
+    <td><%= @tel.full_name %></td>
+  </tr>
+  <tr>
+    <td><%= @tel.tel_num %></td>
+    <td>
+      <div class="toolbar"><%= link_to "delete", [:edit, @tel] %></div>
+    </td>
+  </tr>
+  
+</table>
+<%= link_to "<<TOP", "/tels" %>

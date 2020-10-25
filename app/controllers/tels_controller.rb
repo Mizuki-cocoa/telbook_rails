@@ -13,15 +13,15 @@ class TelsController < ApplicationController
     
     # 会員情報の詳細
     def show
-        #@member = Member.find(params[:id])
+        @tel = Tel.find(params[:id])
     end
     
     def new
-        #@member = Member.new(birthday: Date.new(1980,1,1))
+        @tel = Tel.new()
     end
     
     def edit
-        #@member = Member.find(params[:id])
+        @tel = Tel.find(params[:id])
     end
     
     def create
