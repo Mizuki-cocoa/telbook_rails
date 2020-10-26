@@ -6,19 +6,18 @@
 <% if @tels.present? %>
   <table class="list">
     <tbody>
-      <% @tels.each do |tel| %>
-        <tr>
-          <td style="text-align: right"><%= tel.number %></td>
-          <td><%= link_to tel.full_name, tel %></td>
-          <td>
+      <ol start="1">
+        <% @tels.each do |tel| %>
+          <li>
+            <%= link_to tel.full_name, tel %>
             <%= link_to "edit", [:edit, tel] %> |
-            <%= link_to "delete", tel, method: :delete,
-              data: { confirm: "本当に削除しますか?" } %>
-          </td>
-        </tr>
-      <% end %>
+            <%= link_to "delete", tel, method: :delete, data: { confirm: "本当に削除しますか?" } %>
+          </li>
+        <% end %>
+      </ol>
     </tbody>
   </table>
+  <%= paginate @tels %>
 <% else %>
   <p>会員情報がありません。</p>
 <% end %>

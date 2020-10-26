@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_24_141758) do
+ActiveRecord::Schema.define(version: 2020_10_26_091739) do
 
   create_table "tels", force: :cascade do |t|
-    t.integer "number", null: false
     t.string "full_name", null: false
     t.text "tel_num"
+    t.boolean "cellphone", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

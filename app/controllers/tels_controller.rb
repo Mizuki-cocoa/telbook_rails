@@ -2,13 +2,7 @@ class TelsController < ApplicationController
     #before_action :login_required
     # 会員一覧
     def index
-        @tels = Tel.order("number")
-    end
-    
-    # 検索
-    def search
-        #@tels = tel.search(params[:q],params[:man],params[:lady]).page(params[:page]).per(15)
-        #render "index"#index.html.erbでの参照
+        @tels = Tel.order("id").page(params[:page]).per(15)
     end
     
     # 会員情報の詳細
