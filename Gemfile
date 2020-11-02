@@ -36,7 +36,7 @@ gem 'email_validator', '~> 1.6'
 
 gem 'kaminari'
 gem 'kaminari-i18n'
-
+gem 'pry-rails'
 gem 'date_validator', '~>0.10.0'
 
 group :development, :test do

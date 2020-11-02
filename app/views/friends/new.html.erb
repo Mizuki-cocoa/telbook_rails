@@ -1,0 +1,10 @@
+<% @page_title = "友達の新規登録" %>
+
+<h1><%= @page_title %></h1>
+
+<%= form_for @friend do |form| %>
+  <%= render "shared/friend_form", form: form %>
+  <div><%= form.submit :update%></div>
+<% end %>
+
+<%= link_to "<<TOP", "/friends" %>

@@ -1,23 +1,36 @@
-<% @page_title = "Telephone Book" %>
+<% @page_title = "友達詳細" %>
 <h1><%= @page_title %></h1>
+<p><%= @friend.name %></p>
+<% @par = params[:friend_id]%>
 
-<div class="toolbar"><%= link_to "add", :new_tel %></div>
+<% @tel =  Tel.where(friend_id: @par) %>
+<% @tels= @friend.tels %>
+<% @tels << @tel %>
 
 <% if @tels.present? %>
-  <table class="list">
-    <tbody>
-      <ol start="1">
-        <% @tels.each do |tel| %>
-          <li>
-            <%= link_to tel.full_name, tel %>
-            <%= link_to "edit", [:edit, tel] %> |
-            <%= link_to "delete", tel, method: :delete, data: { confirm: "本当に削除しますか?" } %>
-          </li>
-        <% end %>
-      </ol>
-    </tbody>
-  </table>
-  <%= paginate @tels %>
+  <% @tel.each do |tel| %>
+    <td><%= tel.tel_num %></td>
+    <% if tel.cellphone == true then %>
+      <td><%= image_tag("tel.png", size: "30x30", alt: "telphone") %></td>
+    <% end %>
+    <td>
+      <%= link_to "削除",tel, method: :delete,
+        data: { confirm: "本当に削除?" } %>
+    </td>
+  <% end %>
 <% else %>
-  <p>会員情報がありません。</p>
+  <p>電話番号が有りません。</p>
 <% end %>
+
+<%= form_for (friend_tels_path(@friend)),:url => {controller: "tels", action: "create"}, method: :post do |f| %>
+  <p>
+    <%= f.label :tel_num, "電話番号" %>
+    <%= f.text_field :tel_num %>
+    <%= f.check_box :cellphone, {}, "on", "off" %>
+    <%= f.submit%>
+  </p>
+<% end %>
+
+<div class="toolbar">
+  <%= link_to "<<TOP", "/friends" %>
+</div>

@@ -1,0 +1,20 @@
+<% @page_title = "Telephone Book" %>
+<h1><%= @page_title %></h1>
+
+<div class="toolbar"><%= link_to "add", :new_friend %></div>
+
+
+  <table class="list">
+    <tbody>
+      <ol start="1">
+        <% @friends.each do |friend| %>
+          <li>
+            <%= link_to friend.name, friend %>
+            <%= link_to "edit", [:edit, friend] %> |
+            <%= link_to "delete", friend, method: :delete, data: { confirm: "本当に削除しますか?" } %>
+          </li>
+        <% end %>
+      </ol>
+    </tbody>
+  </table>
+  <%= paginate @friends %>

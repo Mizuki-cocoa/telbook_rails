@@ -1,0 +1,11 @@
+<% @page_title = "友達の名前編集" %>
+<h1><%= @page_title %></h1>
+
+<%= form_for @friend do |form| %>
+    <%= render "shared/friend_form", form: form %>
+    <div><%= form.submit %></div>
+<% end %>
+
+<div class="toolbar">
+  <%= link_to "<<TOP", "/friends" %>
+</div>

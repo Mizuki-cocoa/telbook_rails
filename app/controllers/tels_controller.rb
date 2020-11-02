@@ -1,47 +1,31 @@
 class TelsController < ApplicationController
-    #before_action :login_required
-    # 会員一覧
     def index
-        @tels = Tel.order("id").page(params[:page]).per(15)
+        @friend=Friend.find(params[:friend_id])
+        @tels = Tel.order("id")
     end
-    
-    # 会員情報の詳細
+
     def show
-        @tel = Tel.find(params[:id])
+        @friend=Friend.find(params[:friend_id])
+        @tels = Tel.find(params[:id])
     end
-    
+
     def new
         @tel = Tel.new()
     end
-    
-    def edit
-        @tel = Tel.find(params[:id])
-    end
-    
+
+    # 新規作成
     def create
-        params.permit!
-        @tel=Tel.new(params[:tel])
+        @friend=Friend.find(params[:friend_id])
+        @tel = @friend.tels.build(params[:tel])
         if @tel.save
-        redirect_to @tel, notice: "会員を登録しました。"
-        else
-        render "new"
+            redirect_to request.referer, notice: "電話番号を登録しました。"
         end
     end
-    
-    def update
-        params.permit!
-        @tel=Tel.find(params[:id])
-        @tel.assign_attributes(params[:tel])
-        if @tel.save
-        redirect_to @tel, notice: "会員情報を更新しました。"
-        else
-        render "edit"
-        end
-    end
-    
+
+    # 削除
     def destroy
         @tel=Tel.find(params[:id])
         @tel.destroy
-        redirect_to :tels, notice: "会員を削除しました。"
+        redirect_to request.referer, notice: "電話番号を削除しました。"
     end
 end
