@@ -17,8 +17,11 @@ class TelsController < ApplicationController
     def create
         @friend=Friend.find(params[:friend_id])
         @tel = @friend.tels.build(params[:tel])
+        @tel.friend=@friend
         if @tel.save
             redirect_to request.referer, notice: "電話番号を登録しました。"
+        else
+            render 'new'
         end
     end
 

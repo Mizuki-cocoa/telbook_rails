@@ -7,8 +7,11 @@
 <% @tels= @friend.tels %>
 <% @tels << @tel %>
 
+<% @tel1 =  Tel.new %>
+
 <% if @tels.present? %>
-  <% @tel.each do |tel| %>
+  <% @tels.each do |tel| %>
+  <li>
     <td><%= tel.tel_num %></td>
     <% if tel.cellphone == true then %>
       <td><%= image_tag("tel.png", size: "30x30", alt: "telphone") %></td>
@@ -17,18 +20,19 @@
       <%= link_to "削除",tel, method: :delete,
         data: { confirm: "本当に削除?" } %>
     </td>
+  </li>
   <% end %>
 <% else %>
   <p>電話番号が有りません。</p>
 <% end %>
 
-<%= form_for (friend_tels_path(@friend)),:url => {controller: "tels", action: "create"}, method: :post do |f| %>
-  <p>
-    <%= f.label :tel_num, "電話番号" %>
-    <%= f.text_field :tel_num %>
-    <%= f.check_box :cellphone, {}, "on", "off" %>
-    <%= f.submit%>
-  </p>
+<%= form_for(@tel1,url: {controller: :tels, action: :create}) do |f| %>
+<p>
+  <%= f.label :tel_num, "電話番号" %>
+  <%= f.text_field :tel_num %>
+  <%= f.check_box :cellphone, {}, "on", "off" %>
+  <%= f.submit %>
+</p>
 <% end %>
 
 <div class="toolbar">
