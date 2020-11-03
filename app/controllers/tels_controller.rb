@@ -21,7 +21,7 @@ class TelsController < ApplicationController
         if @tel.save
             redirect_to request.referer, notice: "電話番号を登録しました。"
         else
-            render 'new'
+            render 'tels/index'
         end
     end
 
