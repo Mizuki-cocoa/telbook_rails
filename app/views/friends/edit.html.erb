@@ -3,9 +3,9 @@
 
 <%= form_for @friend do |form| %>
     <%= render "shared/friend_form", form: form %>
-    <div><%= form.submit %></div>
+    <div><%= form.submit "save" %></div>
 <% end %>
 
 <div class="toolbar">
-  <%= link_to "<<TOP", "/friends" %>
+  <%= link_to "<<TOP", "/friends" , class: "userList" %>
 </div>

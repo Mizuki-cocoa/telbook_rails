@@ -9,11 +9,7 @@
 <% if @tels.present? %>
   <% @tels.each do |tel| %>
     <% if tel.errors.any? %>
-      <div>
-          <% tel.errors.full_messages.each do |message| %>
-            <%= message %>
-          <% end %>
-      </div>
+      <%= render "shared/errors", obj: tel %>
     <% else %>
         <li>
           <td><%= tel.tel_num %></td>
@@ -21,7 +17,7 @@
           <td><%= image_tag("tel.png", size: "30x30", alt: "telphone") %></td>
         <% end %>
           <%= link_to "delete" ,tel, method: :delete,
-            data: { confirm: "本当に削除?" } %>
+            data: { confirm: "本当に削除?" }, class: "userList" %>
         </li>
     <% end %>
   <% end %>
@@ -30,7 +26,7 @@
 <% end %>
 
 <% @telnew =  Tel.new %>
-<%= form_for(@telnew,url: {controller: :tels, action: :create}) do |f| %>
+<%= form_for(@telnew, url: {controller: :tels, action: :create}) do |f| %>
 <p>
   <%= f.text_field :tel_num %>
   <%= f.check_box :cellphone, {}, "on", "off" %>
@@ -39,5 +35,5 @@
 <% end %>
 
 <div class="toolbar">
-  <%= link_to "<<TOP", "/friends" %>
+  <%= link_to "<<TOP", "/friends" , class: "userList" %>
 </div>

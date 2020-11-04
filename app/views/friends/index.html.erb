@@ -1,15 +1,15 @@
 <% @page_title = "Telephone Book" %>
 <h1><%= @page_title %></h1>
 
-<div class="toolbar"><%= link_to "add", :new_friend %></div>
+<div class="toolbar"><%= link_to "add", :new_friend, class: "userList" %></div>
   <table class="list">
     <tbody>
       <ol start="1">
         <% @friends.each do |friend| %>
           <li>
             <%= link_to friend.name, friend %>
-            <%= link_to "edit", [:edit, friend] %> |
-            <%= link_to "delete", friend, method: :delete, data: { confirm: "本当に削除しますか?" } %>
+            <%= link_to "edit", [:edit, friend], class: "userList" %> |
+            <%= link_to "delete", friend, method: :delete, data: { confirm: "本当に削除しますか?" }, class: "userList" %>
           </li>
         <% end %>
       </ol>

@@ -4,7 +4,7 @@
 
 <%= form_for @friend do |form| %>
   <%= render "shared/friend_form", form: form %>
-  <div><%= form.submit :update%></div>
+  <div><%= form.submit "save"%></div>
 <% end %>
 
-<%= link_to "<<TOP", "/friends" %>
+<%= link_to "<<TOP", "/friends" , class: "userList" %>
